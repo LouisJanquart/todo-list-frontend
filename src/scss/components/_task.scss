@@ -1,0 +1,64 @@
+@use "../abstracts" as *;
+@use "sass:color" as color;
+
+.task {
+  display: grid;
+  grid-template-columns: 1fr 1fr 5rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: inset 0 0 0 1px $color-border;
+
+  &__infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    block-size: 2rem;
+    inline-size: 2rem;
+    border-radius: 1rem;
+    background-color: $color-checkbox-bg;
+    box-shadow: inset 0.25rem 0.25rem 0.5rem
+        color.adjust($color-checkbox-bg, $lightness: -5%),
+      inset -0.25rem -0.25rem 0.5rem
+        color.adjust($color-checkbox-bg, $lightness: 5%);
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-checkbox-hover;
+      box-shadow: none;
+      transition: background-color 0.3s ease;
+    }
+
+    span {
+      display: none;
+    }
+
+    &:has(input[type="checkbox"]:checked) {
+      background-color: $color-checkbox-checked-bg;
+      box-shadow: 0.25rem 0.25rem 0.5rem
+          color.adjust($color-checkbox-bg, $lightness: -5%),
+        -0.25rem -0.25rem 0.5rem
+          color.adjust($color-checkbox-bg, $lightness: 5%);
+      span {
+        display: flex;
+      }
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use "../abstracts" as *;
+@use "sass:color" as color;
+
+select {
+  position: relative;
+  appearance: none;
+  block-size: 2rem;
+  inline-size: 100%;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  padding-inline-end: 2rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: $color-text;
+  background-color: $color-background;
+  border-radius: 1rem;
+  box-shadow: inset 0.25rem 0.25rem 0.5rem
+      color.adjust($color-checkbox-bg, $lightness: -5%),
+    inset -0.25rem -0.25rem 0.5rem
+      color.adjust($color-checkbox-bg, $lightness: 5%);
+  cursor: pointer;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-wrapper .material-symbols-outlined {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 0.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: $color-text;
+  user-select: none;
+}
